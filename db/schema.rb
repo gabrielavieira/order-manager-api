@@ -17,21 +17,23 @@ ActiveRecord::Schema.define(version: 2019_04_14_130958) do
 
   create_table "batches", force: :cascade do |t|
     t.string "reference"
-    t.string "purchaseChannel"
+    t.string "purchase_channel"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "orders", force: :cascade do |t|
+    t.bigint "batch_id"
     t.string "reference"
-    t.string "purchaseChannel"
-    t.string "clientName"
+    t.string "purchase_channel"
+    t.string "client_name"
     t.string "address"
-    t.string "deliveryService"
+    t.string "delivery_service"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "status", default: 0
-    t.decimal "totalValue", precision: 8, scale: 2
+    t.decimal "total_value", precision: 8, scale: 2
+    t.index ["batch_id"], name: "index_orders_on_batch_id"
   end
 
 end

@@ -39,6 +39,8 @@ test:
 
 production:
   <<: *default
-  database: order-manager-api_production
-  username: order-manager-api
-  password: <%= ENV['ORDER-MANAGER-API_DATABASE_PASSWORD'] %>
+  database: order_manager_production
+  username: order_manager_dev
+  password: 123456
+  host: localhost
+  port: 5432

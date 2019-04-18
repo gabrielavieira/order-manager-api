@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 	namespace 'api' do
-  		resources :orders
-  		resources :batches
+		namespace 'v1' do
+			resources :orders
+  			resources :batches
+		end
 	end
 end
