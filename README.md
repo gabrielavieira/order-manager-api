@@ -1,24 +1,39 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+A simple REST API using Ruby on Rails. The purpose is to create a platform to receive Purchase Orders from other systems, group them on Batches and follow the Orders in the production pipeline until the dispatch.
 
-Things you may want to cover:
+**Structure**
+I thought about creating 3 resources, which are: Order, Batch and FinancialReport.
 
-* Ruby version
+Order, would be responsible for:
+- create a new order;
+- find the status of an order;
+- List the Orders by Purchase Channel, status or others filters.
 
-* System dependencies
+Batch, would be responsible for:
+- create a batch;
+- update the batch, changing the status from production to closing;
+- Close part of a Batch for a Delivery Service.
 
-* Configuration
+FinancialReport, would be responsible for:
+- showing, for each Purchase Channel, how many Orders and Total Value (Sum) for those Orders.
 
-* Database creation
+Additional Stuff - how to improve the platform in the future:
 
-* Database initialization
+- A security layer, to prevent script kiddies from messing up our Orders and putting on YouTube.
+We can build an Authorization/Authentication mechanism, the methods must be accessed by authenticated users only. Ex: use the bcrypt and jwt gem.
 
-* How to run the test suite
+- A permission layer, that way we can be sure that each user is only working with their stuff.
+We can use the token to indentify the user, and to ensure that privileged collections or actions are properly protected from unauthorized use.
 
-* Services (job queues, cache servers, search engines, etc.)
+- Sometimes people confuses Moto G5 with Moto G5S and we need a way to modify Orders in production.
+We can change a purchase order and notify the operators in some way.
 
-* Deployment instructions
+- A web UI to control everything directly, without the need of going thought the API.
+As theoretically there would already be an api created in ruby on rails, a centralized application with the same technology could be made to reuse resources.
 
-* ...
+Tecnologies
+
+* Ruby version: 2.5.1
+* Rails version: 5.2.3
+* Database: Postgres
